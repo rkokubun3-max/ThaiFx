@@ -25,7 +25,7 @@
                     <div class="graph-header">
                         <div class="graph-detail">
                             <p id="graph-currency">USD/THB-30 Days</p>
-                            <p id="graph-rate"><%= rates.find(item => item.base === "USD").rate %></p>
+                            <p id="graph-rate"><%= rates?.find(item => item.base === "USD")?.rate || '0.00' %></p>
                         </div>
                         <div class="graph-currencies">
                             <div>
