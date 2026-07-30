@@ -1,0 +1,44 @@
+<%- include('partials/header.ejs') %>
+    <section id="exchange">
+        <div class="wrapper">
+            <div class="exchange-layout navy-bg">
+                <form action="/exchangesubmit" method="post" id="exchangeForm">
+                    <h3>Exchange</h3>
+                    <p>Convert between currencies instantly</p>
+                    <div class="jus-space">
+                        <p>FROM</p>
+                        <p class="yellow-text" id="base-txt">Balance <%= user.thb %> THB</p>
+                    </div>
+                    <div class="gridauto1">
+                        <select name="base" id="base" class="navy-bg calculate-click select">
+                            <option value="THB">THB</option>
+                            <% rates.forEach(element => { %>
+                            <option value="<%= element.base %>"><%= element.base %></option>
+                            <% }) %>
+                        </select>
+                        <input type="text" inputmode="decimal" id="converter-input" name="converter-input" class="navy-bg">
+                    </div>
+                    <img src="/images/swap.svg" alt="swap icon" width="30" height="30" id="swap">
+                    <div class="jus-space">
+                        <p>TO</p>
+                        <p class="yellow-text" id="quote-txt">Balance <%= user.thb %> THB</p>
+                    </div>
+                    <div class="gridauto1">
+                        <select name="quote" id="quote" class="navy-bg calculate-click">
+                            <option value="THB">THB</option>
+                            <% rates.forEach(element => { %>
+                                <option value="<%= element.base %>"><%= element.base %></option>
+                            <% }) %>
+                        </select>
+                        <input type="text" id="converter-output" name="converter-output" class="navy-bg" readonly>
+                    </div>
+                    <button type="submit" class="yellow-bg exchange-btn">Exchange</button>
+                </form>
+            </div>
+        </div>
+        <div id="user-data" 
+            data-user='<%- JSON.stringify(user) %>'
+            data-rates='<%- JSON.stringify(rates) %>'>
+        </div>
+    </section>
+<%- include('partials/footer.ejs') %>

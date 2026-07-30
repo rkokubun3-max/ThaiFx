@@ -1,0 +1,33 @@
+h3,
+label {
+  color: white;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.exchange-layout {
+  width: 500px;
+  height: fit-content;
+  padding: 20px;
+  text-align: center;
+}
+
+.gridauto1 {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto;
+  gap: 10px;
+}
+
+.exchange-btn {
+  margin: 20px 0px 0px;
+}
+
+#swap {
+  margin: 20px 0px 0px;
+}

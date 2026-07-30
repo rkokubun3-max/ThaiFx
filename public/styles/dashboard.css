@@ -1,0 +1,44 @@
+.graph-rate-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+  gap: 10px;
+}
+
+.graph-currencies {
+  display: flex;
+  justify-content: space-between;
+}
+
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+#chart {
+  width: 100%;
+  max-width: 1100px;
+  max-height: 200px;
+}
+
+@media screen and (max-width: 767px) {
+  .graph-rate-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px;
+  }
+
+  .canvas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+  }
+}

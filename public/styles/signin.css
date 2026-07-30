@@ -1,0 +1,26 @@
+h3,
+label {
+  color: white;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.signin-layout {
+  width: 500px;
+  height: fit-content;
+  padding: 20px;
+  text-align: center;
+}
+
+.signin {
+  display: none;
+}
+
+.signup {
+  display: none;
+}

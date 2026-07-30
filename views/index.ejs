@@ -1,0 +1,76 @@
+<%- include('partials/header.ejs') %>
+    <section id="ticker-rates">
+        <div class="container">
+            <div class="ticker-tape-container">
+                <div class="ticker-tape">
+                    <% rates.forEach(element => { %>
+                        <span><%= element.base %>/<%= element.quote %>:<%= element.rate %></span>
+                    <% }) %>
+                </div>
+                <div class="ticker-tape" aria-hidden="true">
+                    <% rates.forEach(element => { %>
+                        <span><%= element.base %>/<%= element.quote %>:<%= element.rate %></span>
+                    <% }) %>
+                </div>
+                </div>
+        </div>
+    </section>
+    <section id="hero-converter">
+        <div class="container hero-converter-layout">
+            <div class="hero-layout">
+                <h2>Exchange Currency</h2>
+                <h2 class="yellow-text">at Institutional Rates</h2>
+                <div class="signin-signup">
+                    <a href="signup" class="yellow-bg get-started">Get Started Free</a>
+                    <a href="signin" class="navy-bg signin">Sign In</a>
+                </div>
+            </div>
+            <div class="converter-layout navy-bg">
+                <p style="color: white;">Currency Converter</p>
+                <div class="currency-selector">
+                    <div class="select-group">
+                        <label for="base">From:</label>
+                        <select name="base" id="base" class="navy-bg calculate-click">
+                            <option value="THB">THB</option>
+                            <% rates.forEach(element => { %>
+                            <option value="<%= element.base %>"><%= element.base %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <img src="/images/swap.svg" alt="swap icon" width="30" height="30" id="swap">
+                    <div class="select-group">
+                        <label for="quote">To:</label>
+                        <select name="quote" id="quote" class="navy-bg calculate-click">
+                            <option value="THB">THB</option>
+                            <% rates.forEach(element => { %>
+                                <option value="<%= element.base %>"><%= element.base %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <label for="converter-input">Amount:</label>
+                <input type="text" inputmode="decimal" id="converter-input" name="converter-input" class="navy-bg">
+                <input type="text" id="converter-output" name="converter-output" class="navy-bg" style="height: 50px;" readonly>
+            </div>
+        </div>
+    </section>
+    <section id="graph30days">
+        <div class="container graph30days-layout navy-bg">
+            <div class="graph-header">
+                <div class="graph30days-detail">
+                    <p id="graph30days-currency">USD/THB-30 Days</p>
+                    <p id="graph30days-rate"><%= rates.find(item => item.base === "USD").rate %></p>
+                </div>
+                <div class="graph30days-currencies">
+                    <% rates.forEach(element => { %>
+                        <button class="currency-btn navy-bg" data-currency="<%= element.base %>"><%= element.base %></button>
+                    <% }) %>
+                </div>
+            </div>
+            <div class="canvas-container">
+                <canvas id="30DaysChart" style="width:100%;max-width:1100px;max-height:200px"></canvas>
+            </div>        
+        </div>
+    </section>
+
+<%- include('partials/footer.ejs') %>

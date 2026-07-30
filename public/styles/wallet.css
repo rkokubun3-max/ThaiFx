@@ -1,0 +1,32 @@
+.wallet-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.wallet-box {
+  flex: 0 0 calc(25% - 12px);
+  max-width: calc(25% - 12px);
+
+  background-color: #0d1527;
+  padding: 20px;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 992px) {
+  .wallet-box {
+    flex: 0 0 calc(50% - 8px);
+    max-width: calc(50% - 8px);
+  }
+}
+
+@media (max-width: 576px) {
+  .wallet-box {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

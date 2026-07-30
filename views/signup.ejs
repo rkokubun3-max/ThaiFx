@@ -1,0 +1,31 @@
+<%- include('partials/header.ejs') %>
+    <section id="signin">
+        <div class="wrapper">
+            <div class="signin-layout navy-bg">
+                <form action="/signupsubmit" method="post" id="signupForm">
+                    <h3>Create Account</h3>
+                    <p>Start exchanging with ThaiFX today</p>
+                    <div class="select-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="navy-bg" placeholder="CR7">
+                    </div>
+                    <div class="select-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="navy-bg" placeholder="you@email.com">
+                    </div>
+                    <div class="select-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" class="navy-bg" placeholder="08x-xxx-xxxx">
+                    </div>
+                    <div class="select-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="navy-bg" placeholder="1234">
+                    </div>
+                    <button type="submit" class="yellow-bg">Sign Up</button>
+                    <p>Don't have an account? <a href="signup" class="yellow-text" style="font-size: 18px;">Sign Up</a></p>
+                    <a href="forget" class="yellow-text">Forget your password?</a>
+                </form>
+            </div>
+        </div>
+    </section>
+<%- include('partials/footer.ejs') %>

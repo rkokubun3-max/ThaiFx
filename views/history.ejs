@@ -1,0 +1,32 @@
+<%- include('partials/header.ejs') %>
+    <section id="history">
+        <div class="container">
+            <div class="grid1fr">
+                <p style="color:white">Id</p>
+                <p style="color:white">Type</p>
+                <p style="color:white">From_currency</p>
+                <p style="color:white">From_amount</p>
+                <p style="color:white">To_currency</p>
+                <p style="color:white">To_amount</p>
+                <p style="color:white">Rate</p>
+                <p style="color:white">Created_at</p>
+            </div>
+            <% if (transactions.length > 0) { %>
+                <% transactions.forEach(item => { %>
+                    <div class="grid1fr">
+                        <p><%= item.id %></p>
+                        <p><%= item.type %></p>
+                        <p><%= item.from_currency.toUpperCase() %></p>
+                        <p><%= item.from_amount %></p>
+                        <p><%= item.to_currency.toUpperCase() %></p>
+                        <p><%= item.to_amount %></p>
+                        <p><%= item.rate %></p>
+                        <p><%= new Date(item.created_at).toString().split(" GMT")[0] %></p>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>Don't have any transaction</p>
+            <% } %>
+        </div>
+    </section>
+<%- include('partials/footer.ejs') %>

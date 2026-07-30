@@ -1,0 +1,15 @@
+<%- include('partials/header.ejs') %>
+    <section id="wallet">
+        <div class="container wallet-layout">
+            <% currencies.forEach(element => { %>
+                <div class="wallet-box">
+                    <div class="image-with-text">
+                        <img src="/images/<%= element %>.svg" alt="<%= element %> flag" width="40" height="40">
+                        <span><%= element.toUpperCase() %></span>
+                    </div>
+                    <p style="color: white;"><%= user[element] %></p>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+<%- include('partials/footer.ejs') %>

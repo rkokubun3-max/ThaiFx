@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThaiFX</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <% if (typeof pageStyle !== 'undefined') { %>
+        <link rel="stylesheet" href="/styles/<%= pageStyle %>.css">
+    <% } %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-layout">
+            <p>ThaiFX</p>
+            <% if (isLoggedIn) { %>
+                <div class="menu-bar">
+                    <a href="dashboard">Dashboard</a>
+                    <a href="exchange">Exchange</a>
+                    <a href="wallet">Wallet</a>
+                    <a href="topup">Top Up</a>
+                    <a href="history">History</a>
+                </div>
+                <div class="user-dropdown" id="profileBtn">
+                    <span class="user-name"><%= user.username %></span>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="dashboard" class="hidemenubar">Dashboard</a>
+                        <a href="exchange" class="hidemenubar">Exchange</a>
+                        <a href="wallet" class="hidemenubar">Wallet</a>
+                        <a href="topup" class="hidemenubar">Top Up</a>
+                        <a href="history" class="hidemenubar">History</a>
+                        <a href="logout" class="signout-btn"> Sign Out</a>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="signin-signup">
+                    <a href="signin" class="signin">Sign In</a>
+                    <a href="signup" class="yellow-bg signup">Sign Up</a>
+                </div>
+            <% } %>
+        </div>
+    </header>

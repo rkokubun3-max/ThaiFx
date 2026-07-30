@@ -1,0 +1,159 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #0b0f1a;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}
+
+a {
+  text-decoration: none;
+  margin: 10px;
+  color: #687185;
+}
+
+p,
+span {
+  color: #687185;
+}
+
+h2 {
+  color: white;
+  font-size: 48px;
+}
+
+/*header*/
+.header-layout {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+}
+
+.yellow-bg,
+.currency-btn.active,
+.days-btn.active {
+  background-color: #d4a843;
+  border-radius: 14px;
+  padding: 10px;
+  color: black;
+}
+
+.signin {
+  margin: 10px;
+  color: #687185;
+}
+
+.signup {
+  margin: 10px;
+}
+
+.navy-bg {
+  background-color: #1a2236;
+  border-radius: 14px;
+  padding: 10px;
+  color: white;
+}
+
+.select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 10px;
+  text-align: left;
+}
+
+.yellow-text {
+  color: #d4a843;
+}
+
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1000;
+  display: none;
+  width: 100px;
+  background-color: #111827;
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu a:hover {
+  color: white;
+}
+
+.divider {
+  height: 1px;
+  margin: 12px 0;
+}
+
+.image-with-text {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.wallet-box {
+  background-color: #111827;
+  border-radius: 14px;
+  width: 200px;
+  height: auto;
+  padding: 20px;
+}
+
+.jus-space {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lightnavy-bg {
+  background-color: #111827;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.hidemenubar {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .jus-space {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .menu-bar {
+    display: none;
+  }
+
+  .hidemenubar {
+    display: block;
+  }
+}

@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs') %>
+    <section id="signin">
+        <div class="wrapper">
+            <div class="signin-layout navy-bg">
+                <form action="/signinsubmit" method="post" id="signinForm">
+                    <h3>Sign In</h3>
+                    <p>Welcome back to ThaiFX</p>
+                    <div class="select-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="navy-bg" placeholder="you@email.com">
+                    </div>
+                    <div class="select-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="navy-bg" placeholder="1234">
+                    </div>
+                    <button type="submit" class="yellow-bg">Sign In</button>
+                    <p>Don't have an account? <a href="signup" class="yellow-text" style="font-size: 18px;">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+    </section>
+<%- include('partials/footer.ejs') %>

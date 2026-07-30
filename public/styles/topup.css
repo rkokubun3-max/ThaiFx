@@ -1,0 +1,24 @@
+h3,
+label {
+  color: white;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.topup-layout {
+  width: 500px;
+  height: fit-content;
+  padding: 20px;
+  text-align: center;
+}
+
+.qrcode {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}

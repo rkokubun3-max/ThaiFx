@@ -1,0 +1,62 @@
+<%- include('partials/header.ejs') %>
+    <section id="dashboard">
+        <div class="container">
+            <div class="jus-space" style="margin: 20px 0px 0px;">
+                <h3 style="color: white;">Hello, <%= user.username %></h3>
+                <a href="topup" class="yellow-bg">Top Up</a>
+            </div>
+            <div class="jus-space" style="margin: 10px 0px;">
+                <p>MY WALLET</p>
+                <a href="wallet" class="yellow-text">View All</a>
+            </div>
+            <div class="jus-space" style="margin: 0px 0px 20px;">
+                <% currencies.forEach(element => { %>
+                    <div class="wallet-box">
+                        <div class="image-with-text">
+                            <img src="/images/<%= element %>.svg" alt="<%= element %> flag" width="40" height="40">
+                            <span><%= element.toUpperCase() %></span>
+                        </div>
+                        <p style="color: white;"><%= user[element] %></p>
+                    </div>
+                <% }) %>
+            </div>
+            <div class="graph-rate-layout">
+                <div class="lightnavy-bg">
+                    <div class="graph-header">
+                        <div class="graph-detail">
+                            <p id="graph-currency">USD/THB-30 Days</p>
+                            <p id="graph-rate"><%= rates.find(item => item.base === "USD").rate %></p>
+                        </div>
+                        <div class="graph-currencies">
+                            <div>
+                                <button class="days-btn navy-bg" data-days="7">7D</button>
+                                <button class="days-btn navy-bg" data-days="14">14D</button>
+                                <button class="days-btn navy-bg" data-days="30">30D</button>
+                            </div>
+                            <div>
+                                <% currencies.forEach(element => { %>
+                                    <% if (element !== "thb") { %>
+                                        <button class="currency-btn navy-bg" data-currency="<%= element.toUpperCase() %>"><%= element.toUpperCase() %></button>
+                                    <% } %>
+                                <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="canvas-container">
+                        <canvas id="chart"></canvas>
+                    </div>    
+                </div>
+                <div class="lightnavy-bg">
+                    <p style="color: white;">Live Rate</p>
+                    <% rates.forEach(element => { %>
+                        <div class="jus-space">
+                            <span><%= element.base %> / THB</span>
+                            <span><%= element.rate %></span>
+                        </div>
+                        <br>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </section>
+<%- include('partials/footer.ejs') %>

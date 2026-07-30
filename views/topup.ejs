@@ -1,0 +1,24 @@
+<%- include('partials/header.ejs') %>
+    <section id="topup">
+        <div class="wrapper">
+            <div class="topup-layout navy-bg">
+                <form id="topupForm">
+                    <h3>Top Up</h3>
+                    <p>Add funds to your ThaiFX wallet</p>
+                    <div id="qrcode">
+                        <canvas id="qrcodeCanvas"></canvas>
+                    </div>
+                    <div class="select-group">
+                        <label for="id">User Id</label>
+                        <input type="text" id="id" name="id" class="navy-bg" value="<%= user.id %>" readonly>
+                    </div>
+                    <div class="select-group">
+                        <label for="amount">Amount(THB)</label>
+                        <input type="number" id="amount" name="amount" class="navy-bg" placeholder="THB">
+                    </div>
+                    <button type="submit" class="yellow-bg">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </section>
+<%- include('partials/footer.ejs') %>
