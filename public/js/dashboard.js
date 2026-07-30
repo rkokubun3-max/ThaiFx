@@ -74,8 +74,8 @@ async function updateChart(selectedCurrency, selectedDay) {
       },
       options: {
         interaction: {
-          mode: "index", // ดึงข้อมูลของวันที่ตรงกับแนวเมาส์มาแสดง
-          intersect: false, // ไม่ต้องเอาเมาส์จิ้มโดนจุดตรงๆ ก็แสดง Tooltip ได้
+          mode: "index",
+          intersect: false,
         },
         plugins: {
           legend: {
@@ -83,7 +83,7 @@ async function updateChart(selectedCurrency, selectedDay) {
           },
         },
         tooltip: {
-          enabled: true, // เปิดให้แสดงตัวบอกข้อมูล
+          enabled: true,
         },
         scales: {
           x: {

@@ -59,7 +59,6 @@
             <div class="graph-header">
                 <div class="graph30days-detail">
                     <p id="graph30days-currency">USD/THB-30 Days</p>
-                    <!-- 💡 ใส่ ?. และ || '0.00' เพื่อป้องกัน Error อ่านค่า rate ไม่เจอ -->
                     <p id="graph30days-rate"><%= rates?.find(item => item.base === "USD")?.rate || '0.00' %></p>
                 </div>
                 <div class="graph30days-currencies">

@@ -495,6 +495,7 @@ async function loadRate() {
       "https://api.frankfurter.dev/v2/rates?base=THB",
       { timeout: 5000 },
     );
+    latestRatesData = response.data;
   } catch (error) {
     console.error(
       "⚠️ External API Error, using latest cached data:",
