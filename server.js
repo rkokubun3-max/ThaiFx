@@ -15,7 +15,6 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 const port = process.env.PORT || 3000;
-const API_URL = process.env.API_URL || "http://localhost:4000";
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -35,7 +34,6 @@ io.on("connection", (socket) => {
     console.log(`Socket ${socket.id} joined room: ${roomName}`);
   });
 });
-let currentUserId = 1;
 let latestRatesData = [];
 const indexCurrencies = [
   "USD",
@@ -104,7 +102,7 @@ app.get("/dashboard", async (req, res) => {
   if (!req.session.isLoggedIn) {
     return res.redirect("/signin");
   }
-  req.session.user = await readUser(req, currentUserId);
+  req.session.user = await readUser(req, req.session.user.id);
   const thQuoteRates = await loadRate();
 
   res.render("dashboard.ejs", {
@@ -142,7 +140,7 @@ app.get("/exchange", async (req, res) => {
   if (!req.session.isLoggedIn) {
     return res.redirect("/signin");
   }
-  req.session.user = await readUser(req, currentUserId);
+  req.session.user = await readUser(req, req.session.user.id);
   const thQuoteRates = await loadRate();
   res.render("exchange.ejs", {
     pageStyle: "exchange",
@@ -157,7 +155,7 @@ app.get("/wallet", async (req, res) => {
   if (!req.session.isLoggedIn) {
     return res.redirect("/signin");
   }
-  req.session.user = await readUser(req, currentUserId);
+  req.session.user = await readUser(req, req.session.user.id);
   res.render("wallet.ejs", {
     pageStyle: "wallet",
     pageScript: "wallet",
@@ -383,7 +381,7 @@ app.post("/signupsubmit", async (req, res) => {
     ]);
     req.session.user = result.rows[0];
     req.session.isLoggedIn = true;
-    currentUserId = req.session.user.id;
+    req.session.user.id = req.session.user.id;
     return res.status(200).json({
       success: true,
       message: "Sign up success",
@@ -438,7 +436,7 @@ app.post("/signinsubmit", async (req, res) => {
 
     req.session.user = result.rows[0];
     req.session.isLoggedIn = true;
-    currentUserId = req.session.user.id;
+    req.session.user.id = req.session.user.id;
 
     return res
       .status(200)
@@ -469,10 +467,10 @@ function thQuote(data) {
   return thQuoteRates;
 }
 
-async function readUser(req, currentUserId) {
+async function readUser(req, userId) {
   try {
     const result = await pool.query("SELECT * FROM users WHERE id = $1", [
-      currentUserId,
+      userId,
     ]);
     if (result.rows.length > 0) {
       const user = result.rows[0];
@@ -493,8 +491,10 @@ async function readUser(req, currentUserId) {
 
 async function loadRate() {
   try {
-    const response = await axios.get(`${API_URL}/rates`, { timeout: 5000 });
-    latestRatesData = response.data;
+    const response = await axios.get(
+      "https://api.frankfurter.dev/v2/rates?base=THB",
+      { timeout: 5000 },
+    );
   } catch (error) {
     console.error(
       "⚠️ External API Error, using latest cached data:",
