@@ -501,6 +501,9 @@ async function loadRate() {
       error.message,
     );
   }
+  if (!Array.isArray(latestRatesData)) {
+    return [];
+  }
   const filteredRates = filter(latestRatesData, indexCurrencies);
   return thQuote(filteredRates);
 }

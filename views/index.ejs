@@ -3,12 +3,12 @@
         <div class="container">
             <div class="ticker-tape-container">
                 <div class="ticker-tape">
-                    <% rates.forEach(element => { %>
+                    <% (rates || []).forEach(element => { %>
                         <span><%= element.base %>/<%= element.quote %>:<%= element.rate %></span>
                     <% }) %>
                 </div>
                 <div class="ticker-tape" aria-hidden="true">
-                    <% rates.forEach(element => { %>
+                    <% (rates || []).forEach(element => { %>
                         <span><%= element.base %>/<%= element.quote %>:<%= element.rate %></span>
                     <% }) %>
                 </div>
@@ -32,7 +32,7 @@
                         <label for="base">From:</label>
                         <select name="base" id="base" class="navy-bg calculate-click">
                             <option value="THB">THB</option>
-                            <% rates.forEach(element => { %>
+                            <% (rates || []).forEach(element => { %>
                             <option value="<%= element.base %>"><%= element.base %></option>
                             <% }) %>
                         </select>
@@ -42,7 +42,7 @@
                         <label for="quote">To:</label>
                         <select name="quote" id="quote" class="navy-bg calculate-click">
                             <option value="THB">THB</option>
-                            <% rates.forEach(element => { %>
+                            <% (rates || []).forEach(element => { %>
                                 <option value="<%= element.base %>"><%= element.base %></option>
                             <% }) %>
                         </select>
@@ -59,10 +59,11 @@
             <div class="graph-header">
                 <div class="graph30days-detail">
                     <p id="graph30days-currency">USD/THB-30 Days</p>
-                    <p id="graph30days-rate"><%= rates.find(item => item.base === "USD").rate %></p>
+                    <!-- 💡 ใส่ ?. และ || '0.00' เพื่อป้องกัน Error อ่านค่า rate ไม่เจอ -->
+                    <p id="graph30days-rate"><%= rates?.find(item => item.base === "USD")?.rate || '0.00' %></p>
                 </div>
                 <div class="graph30days-currencies">
-                    <% rates.forEach(element => { %>
+                    <% (rates || []).forEach(element => { %>
                         <button class="currency-btn navy-bg" data-currency="<%= element.base %>"><%= element.base %></button>
                     <% }) %>
                 </div>
